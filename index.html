@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercedes Guitian</title>
+    <link rel="icon" type="image/png" href="./klipartz.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            
+            <div class="logo" style="display: flex; align-items: center;">
+            <img src="./klipartz.com.png" alt="logo" width="100" height="100">
+            <span style="margin-left: 10px;">Mercedes Guitian</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="#" class="nav-button">Perfil</a>
+                <a href="#" class="nav-button">Codigo del Proyecto</a>
+                <a href="#" class="nav-button">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="tools-container">
+            <!-- Herramienta 1: Matriz de Evaluación de Riesgos -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Matriz de Evaluación de Riesgos</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="risk-level">Nivel de Riesgo:</label>
+                        <select id="risk-level">
+                            <option value="1">Insignificante</option>
+                            <option value="2">Menor</option>
+                            <option value="3">Moderado</option>
+                            <option value="4">Grave</option>
+                            <option value="5">Catastrófico</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="risk-probability">Probabilidad:</label>
+                        <select id="risk-probability">
+                            <option value="1">Muy baja</option>
+                            <option value="2">Baja</option>
+                            <option value="3">Media</option>
+                            <option value="4">Alta</option>
+                            <option value="5">Muy alta</option>
+                        </select>
+                    </div>
+                    <button id="calculate-risk" class="calculate-btn">Calcular</button>
+                    <div class="result" id="risk-result">
+                        <p>Valoración del riesgo: <span id="risk-value"></span></p>
+                        <p>Clasificación: <span id="risk-level-result"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramienta 2: Índice de Siniestralidad -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Índice de Siniestralidad</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="worked-hours">Horas trabajadas:</label>
+                        <input type="number" id="worked-hours" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="accidents">Número de accidentes:</label>
+                        <input type="number" id="accidents" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="lost-days">Días perdidos:</label>
+                        <input type="number" id="lost-days" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="injury-type">Tipo de lesión:</label>
+                        <select id="injury-type">
+                            <option value="1">Leve</option>
+                            <option value="2">Moderada</option>
+                            <option value="3">Grave</option>
+                            <option value="4">Muy grave</option>
+                        </select>
+                    </div>
+                    <button id="calculate-accident" class="calculate-btn">Calcular</button>
+                    <div class="result" id="accident-result">
+                        <p>Índice de Frecuencia: <span id="frequency-index"></span></p>
+                        <p>Índice de Gravedad: <span id="severity-index"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramienta 3: Índice de Masa Corporal -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Índice de Masa Corporal</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="weight">Peso (kg):</label>
+                        <input type="number" id="weight" min="0" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Altura (m):</label>
+                        <input type="number" id="height" min="0" step="0.01">
+                    </div>
+                    <button id="calculate-bmi" class="calculate-btn">Calcular</button>
+                    <div class="result" id="bmi-result">
+                        <p>IMC: <span id="bmi-value"></span></p>
+                        <p>Categoría: <span id="bmi-category"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramienta 4: Extintor Capacidad Nivel -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Extintor Capacidad Nivel</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="extinguisher-type">Tipo de extintor:</label>
+                        <select id="extinguisher-type">
+                            <option value="abc">ABC (Polvo Químico)</option>
+                            <option value="co2">CO2</option>
+                            <option value="agua">Agua</option>
+                            <option value="espuma">Espuma</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="protected-area">Área a proteger (m²):</label>
+                        <input type="number" id="protected-area" min="0">
+                    </div>
+                    <button id="calculate-extinguisher" class="calculate-btn">Calcular</button>
+                    <div class="result" id="extinguisher-result">
+                        <p>Capacidad recomendada: <span id="extinguisher-capacity"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramienta 5: Carga de Fuego -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Carga de Fuego</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="material">Material combustible:</label>
+                        <select id="material">
+                            <option value="madera">Madera</option>
+                            <option value="papel">Papel</option>
+                            <option value="textil">Textil</option>
+                            <option value="plastico">Plástico</option>
+                            <option value="combustible">Combustible líquido</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="material-quantity">Cantidad (kg):</label>
+                        <input type="number" id="material-quantity" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="surface-area">Superficie (m²):</label>
+                        <input type="number" id="surface-area" min="0">
+                    </div>
+                    <button id="calculate-fire-load" class="calculate-btn">Calcular</button>
+                    <div class="result" id="fire-load-result">
+                        <p>Carga de fuego: <span id="fire-load-value"></span> Mcal/m²</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramienta 6: Cálculo de Evacuación -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Cálculo de Evacuación</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="occupants">Número de ocupantes:</label>
+                        <input type="number" id="occupants" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="exits">Número de salidas:</label>
+                        <input type="number" id="exits" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="max-distance">Distancia máxima (m):</label>
+                        <input type="number" id="max-distance" min="0">
+                    </div>
+                    <button id="calculate-evacuation" class="calculate-btn">Calcular</button>
+                    <div class="result" id="evacuation-result">
+                        <p>Tiempo estimado de evacuación: <span id="evacuation-time"></span> minutos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramienta 7: Concentración Máxima Permisible -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Concentración Máxima Permisible</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="substance">Sustancia:</label>
+                        <select id="substance">
+                            <option value="co">Monóxido de carbono (CO)</option>
+                            <option value="co2">Dióxido de carbono (CO2)</option>
+                            <option value="no2">Dióxido de nitrógeno (NO2)</option>
+                            <option value="so2">Dióxido de azufre (SO2)</option>
+                            <option value="h2s">Sulfuro de hidrógeno (H2S)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="measured-concentration">Concentración medida (ppm):</label>
+                        <input type="number" id="measured-concentration" min="0" step="0.01">
+                    </div>
+                    <button id="calculate-tlv" class="calculate-btn">Calcular</button>
+                    <div class="result" id="tlv-result">
+                        <p>Límite permisible: <span id="permissible-limit"></span> ppm</p>
+                        <p>Estado: <span id="tlv-status"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Herramienta 8: Unidad de Ancho de Salida -->
+            <div class="tool">
+                <div class="tool-header">
+                    <h2>Unidad de Ancho de Salida</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="tool-content">
+                    <div class="form-group">
+                        <label for="people-count">Número de personas:</label>
+                        <input type="number" id="people-count" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="building-type">Tipo de edificio:</label>
+                        <select id="building-type">
+                            <option value="residential">Residencial</option>
+                            <option value="commercial">Comercial</option>
+                            <option value="educational">Educativo</option>
+                            <option value="industrial">Industrial</option>
+                        </select>
+                    </div>
+                    <button id="calculate-exit-width" class="calculate-btn">Calcular</button>
+                    <div class="result" id="exit-width-result">
+                        <p>Unidades de ancho de salida: <span id="exit-units"></span></p>
+                        <p>Ancho mínimo: <span id="min-width"></span> metros</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2025 Mercedes Guitian. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
